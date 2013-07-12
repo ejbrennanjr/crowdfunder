@@ -1,6 +1,6 @@
 // Configuration
 var CAMPAIGN_GOAL = 1000;  // Your fundraising goal in dollars
-var BALANCED_MARKETPLACE_URI = "/v1/marketplaces/TEST-MP4oydl7HklFWsZq1QKkiP2o";
+var BALANCED_MARKETPLACE_URI = "/v1/marketplaces/TEST-MP4oydl7HkIFWsZq1QKkiP2o";
 var BALANCED_API_KEY = "905c780eeb3011e2a56e026ba7c1aba6";
 
 

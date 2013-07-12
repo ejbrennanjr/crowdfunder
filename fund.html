@@ -27,7 +27,7 @@
   // Get card data from form
   function getCardData() {
     // Actual form data
-    var form = document.getElementById("payment form");
+    var form = document.getElementById("payment_form");
     return {
       "name": form.name.value,
       "card_number": form.card_number.value,
@@ -49,7 +49,7 @@
          return;
        }
 
-       var form = document.getElementById("payment form");
+       var form = document.getElementById("payment_form");
        form.card_uri.value = response.data.uri;
        form.submit();
     });

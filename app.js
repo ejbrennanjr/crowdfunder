@@ -21,14 +21,11 @@ app.listen(port, function() {
 
 // Serve homepage
 app.get("/", function(request, response) {
-    // ToDo: Actually get fundraising tool
-
-
     Q.fcall(_getTotalFunds).then(function(total) {
       response.send(
 	  "<link rel='stylesheet' type='text/css' href='/static/fancy.css'>"+
           "<h1>Your Crowdfunding Campaign</h1>"+
-          "<h2>raised $" + total.toFixed(2) +"  out of $" + CAMPAIGN_GOAL.toFixed(2) + "</h2>"+
+          "<h2>raised $" + total.toFixed(2) + "  out of $" + CAMPAIGN_GOAL.toFixed(2) + "</h2>" +
           "<a href='/fund'>Fund This</a>"
       );
     });
@@ -134,7 +131,7 @@ function _getTotalFunds() {
 	    db.close();
         });
     });
-    return deferrred.promise;
+    return deferred.promise;
 }
 
 

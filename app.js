@@ -131,7 +131,7 @@ function _getTotalFunds() {
 	    deferred.resolve(total);
 
 	    // Close database
-	    db.close():
+	    db.close();
         });
     });
     return deferrred.promise;

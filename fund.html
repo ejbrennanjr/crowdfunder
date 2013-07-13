@@ -40,11 +40,8 @@ AOA<script src="https://js.balancedpayments.com/v1/balanced.js"></script>
 
   // Charge credit card
   function charge() {
-alert("before");
     // Securely tokenize card data using Balanced
-    var cardData = getCardData();
-alert("cardData = " + cardData);
- 
+    var cardData = getCardData(); 
     balanced.card.create(cardData, function(response) {
 
        // Handle errors
@@ -54,7 +51,6 @@ alert("cardData = " + cardData);
        }
 
        var form = document.getElementById("payment_form");
-alert("uri=" + response.data.uri);
        form.card_uri.value = response.data.uri;
        form.submit();
     });

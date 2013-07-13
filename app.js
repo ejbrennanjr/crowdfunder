@@ -55,7 +55,7 @@ app.post("/pay/balanced", function (request, response) {
 	// Charge said account for the given amount
 	return _callBalanced("/debits", {
 	    account_uri: account.uri,
-	    amount: Math.round(amount*1000) // Convert from dollars to cents
+	    amount: Math.round(amount*100) // Convert from dollars to cents
         });
     }).then(function(transaction) {
 	// Donation data

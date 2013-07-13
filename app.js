@@ -3,15 +3,12 @@ var express = require('express');
 var Q = require('q');
 var httpRequest = require('request');
 var mongo = require('mongodb').MongoClient;
-var url require('url');
-
 
 // Configuration
 var CAMPAIGN_GOAL = 1000;  // Your fundraising goal in dollars
 var BALANCED_MARKETPLACE_URI = "/v1/marketplaces/TEST-MP4oydl7HkIFWsZq1QKkiP2o";
 var BALANCED_API_KEY = "905c780eeb3011e2a56e026ba7c1aba6";
-var MONGO_URI = url.parse(process.env.MONGOHQ_URL);
-var dbname= MONGO_URI.pathname.replace(/^\//, '');
+var MONGO_URI = process.env.MONGOHQ_URL;
 
 // Initialize the Express app
 var app = express();

@@ -101,7 +101,7 @@ function _recordDonation(donation) {
 	    deferred.resolve(donation);
 
 	    // Close database
-	    db.close():
+	    db.close();
          });
     });
     return deferred.promise;

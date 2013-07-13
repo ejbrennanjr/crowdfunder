@@ -2,13 +2,16 @@
 var express = require('express');
 var Q = require('q');
 var httpRequest = require('request');
+var mongo = require('mongodb').MongoClient;
+var url require('url');
 
 
 // Configuration
 var CAMPAIGN_GOAL = 1000;  // Your fundraising goal in dollars
 var BALANCED_MARKETPLACE_URI = "/v1/marketplaces/TEST-MP4oydl7HkIFWsZq1QKkiP2o";
 var BALANCED_API_KEY = "905c780eeb3011e2a56e026ba7c1aba6";
-
+var MONGO_URI = url.parse(process.env.MONGOHQ_URL);
+var dbname= MONGO_URI.pathname.replace(/^\//, '');
 
 // Initialize the Express app
 var app = express();
@@ -65,10 +68,7 @@ app.post("/pay/balanced", function (request, response) {
 	};
 
 	// TODO: Record transaction in database
-	return Q.fcall(function() {
-	    return donation;
-	});
-
+	return _recordDonation(donation);
     }).then(function(donation) {
         // Personalized Thank You Page
         response.send(
@@ -88,6 +88,26 @@ app.post("/pay/balanced", function (request, response) {
 });
 
 
+// Recording a Donation
+function _recordDonation(donation) {
+    // Promise saving to a database
+    var deferred = Q.defer();
+    mongo.connect(MONGO_URI, function(err, db) {
+	if(err) { return deferred.reject(err); }
+	
+	// Insert donation
+	db.collection('donations').insert(donation, function(err) {
+	    if(err) { return deferred.reject(err); }
+	    
+	    // Promise the donation you just saved
+	    deferred.resolve(donation);
+
+	    // Close database
+	    db.close():
+         });
+    });
+    return deferred.promise;
+}
 
 // Calling the balanced REST API
 function _callBalanced(url, params) {

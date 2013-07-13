@@ -8,8 +8,7 @@ var mongo = require('mongodb').MongoClient;
 var CAMPAIGN_GOAL = 1000;  // Your fundraising goal in dollars
 var BALANCED_MARKETPLACE_URI = "/v1/marketplaces/TEST-MP4oydl7HkIFWsZq1QKkiP2o";
 var BALANCED_API_KEY = "905c780eeb3011e2a56e026ba7c1aba6";
-//var MONGO_URI = process.env.MONGOHQ_URL;
-var MONGO_URI = "mongodb://gertie:idgie@dharma.mongohq.com:10067/app16877788";
+var MONGO_URI = process.env.MONGOHQ_URL;
 
 // Initialize the Express app
 var app = express();
